@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\PostCommentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Homepage
 Route::get('/', [PostController::class, 'index'])->name('home');
+//Show a single Post
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
+// post a comment
+Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
+
+//subscribe to newsletter go to Newsletter controller with invoke method it runs when called NewsletterController::class that is why you do not need to specify the action
+Route::post('newsletter', NewsletterController::class);
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
