@@ -1,0 +1,40 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Database\Factories\{{ class }}Factory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
+
+/**
+ * @property int         $id
+ * @property Carbon      $created_at
+ * @property Carbon      $updated_at
+ *
+ * @method static {{ class }}Factory factory(...$parameters)
+ * @mixin Builder
+ */
+class {{ class }} extends Model
+{
+    use HasFactory;
+
+   /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        //
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'int',
+    ];
+}

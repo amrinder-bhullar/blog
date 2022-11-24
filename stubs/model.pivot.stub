@@ -1,0 +1,59 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Support\Carbon;
+use App\Models\One;
+use App\Models\Two;
+
+/**
+ * @property int         $id
+ * @property int         $one_id
+ * @property int         $two_id
+ * @property Carbon      $created_at
+ * @property Carbon      $updated_at
+ * @property One         $one
+ * @property Two         $two
+ */
+class {{ class }} extends Pivot
+{
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id'     => 'int',
+        'one_id' => 'int',
+        'two_id' => 'int',
+    ];
+
+    /**
+     * One Relationship.
+     *
+     * @return BelongsTo
+     */
+    public function one(): BelongsTo
+    {
+        return $this->belongsTo(One::class);
+    }
+
+    /**
+     * Two Relationship.
+     *
+     * @return BelongsTo
+     */
+    public function two(): BelongsTo
+    {
+        return $this->belongsTo(Two::class);
+    }
+}
