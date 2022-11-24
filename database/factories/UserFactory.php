@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 
 /**
  * @extends Factory<User>
+ * @method $this hasPosts(...$params)
+ * @method $this hasComments(...$params)
  */
 class UserFactory extends Factory
 {
