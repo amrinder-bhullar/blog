@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<Post>
+ * @method $this hasComments(...$params)
  */
 class PostFactory extends Factory
 {
