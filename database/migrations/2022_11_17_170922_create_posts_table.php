@@ -11,19 +11,19 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->index()->constrained();
+            $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();
             $table->string('title');
             $table->string('thumbnail')->nullable();
             $table->text('excerpt');
             $table->text('body');
-            $table->timestamps();
             $table->timestamp('published_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -32,7 +32,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('posts');
     }

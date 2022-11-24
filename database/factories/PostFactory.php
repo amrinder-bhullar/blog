@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Post;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
+ * @extends Factory<Post>
  */
 class PostFactory extends Factory
 {
@@ -17,15 +17,15 @@ class PostFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'user_id'=> User::factory(),
-            'category_id'=> Category::factory(),
-            'title'=> $this->faker->sentence,
-            'slug'=> $this->faker->slug,
-            'excerpt'=> '<p>' . implode('<p></p>', $this->faker->paragraphs(2)) . '</p>',
-            'body'=> '<p>' . implode('<p></p>', $this->faker->paragraphs(6)) . '</p>'
+            'user_id'     => User::factory(),
+            'category_id' => Category::factory(),
+            'title'       => fake()->sentence,
+            'slug'        => fake()->slug,
+            'excerpt'     => '<p>' . implode('<p></p>', fake()->paragraphs(2)) . '</p>',
+            'body'        => '<p>' . implode('<p></p>', fake()->paragraphs(6)) . '</p>',
         ];
     }
 }
