@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<Category>
+ * @method $this hasPosts(...$params)
  */
 class CategoryFactory extends Factory
 {
